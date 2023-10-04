@@ -1,0 +1,4 @@
+name: GlassItemFrames
+version: '${version}'
+main: me.dave.glassitemframes.GlassItemFrames
+api-version: '1.20'
