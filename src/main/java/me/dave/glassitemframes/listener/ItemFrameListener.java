@@ -1,5 +1,6 @@
 package me.dave.glassitemframes.listener;
 
+import me.dave.chatcolorhandler.ChatColorHandler;
 import me.dave.glassitemframes.GlassItemFrames;
 import org.bukkit.*;
 import org.bukkit.entity.Item;
@@ -9,12 +10,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
 
 public class ItemFrameListener implements Listener {
     private static final ItemStack glassItemFrame;
 
     static {
         glassItemFrame = Bukkit.getServer().getUnsafe().modifyItemStack(new ItemStack(Material.ITEM_FRAME), "{CustomModelData:1,EntityTag:{Invisible:1b}}");
+
+        ItemMeta itemMeta = glassItemFrame.getItemMeta();
+        itemMeta.setDisplayName(ChatColorHandler.translateAlternateColorCodes("&fGlass Item Frame"));
+        itemMeta.setLore(List.of(ChatColorHandler.translateAlternateColorCodes("&7An item frame but invisible")));
+
+        glassItemFrame.setItemMeta(itemMeta);
     }
 
     @EventHandler
