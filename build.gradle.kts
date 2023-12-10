@@ -35,8 +35,6 @@ tasks {
         relocate("io.github.skytasul", "me.dave.glassitemframes.libraries.skytasul")
         relocate("me.dave.chatcolorhandler", "me.dave.glassitemframes.libraries.chatcolor")
 
-        val folder = System.getenv("pluginFolder_1-20")
-        if (folder != null) destinationDirectory.set(file(folder))
         archiveFileName.set("${project.name}-${project.version}.jar")
     }
 
