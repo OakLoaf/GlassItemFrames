@@ -18,6 +18,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("io.netty:netty-all:4.1.68.Final")
+    shadow("io.github.skytasul:glowingentities:1.3.1")
     shadow("com.github.CoolDCB:ChatColorHandler:v1.2.3")
 }
 

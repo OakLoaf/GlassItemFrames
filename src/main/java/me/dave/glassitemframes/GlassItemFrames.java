@@ -1,8 +1,8 @@
 package me.dave.glassitemframes;
 
+import fr.skytasul.glowingentities.GlowingBlocks;
 import me.dave.glassitemframes.listener.ItemFrameListener;
 import me.dave.glassitemframes.tasks.ItemFrameDisplayTask;
-import me.dave.glassitemframes.utils.GlowingBlocks;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
