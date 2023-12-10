@@ -18,8 +18,8 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("io.netty:netty-all:4.1.68.Final")
-    shadow("io.github.skytasul:glowingentities:1.3.1")
-    shadow("com.github.CoolDCB:ChatColorHandler:v1.2.3")
+    implementation("io.github.skytasul:glowingentities:1.3.1")
+    implementation("com.github.CoolDCB:ChatColorHandler:v1.2.3")
 }
 
 java {
@@ -32,7 +32,7 @@ tasks {
     }
 
     shadowJar {
-        relocate("io.github.skytasul", "me.dave.glassitemframes.libraries.skytasul")
+        relocate("fr.skytasul", "me.dave.glassitemframes.libraries.skytasul")
         relocate("me.dave.chatcolorhandler", "me.dave.glassitemframes.libraries.chatcolor")
 
         archiveFileName.set("${project.name}-${project.version}.jar")
