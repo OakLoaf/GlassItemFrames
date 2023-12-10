@@ -1,12 +1,11 @@
 plugins {
     java
-    `kotlin-dsl`
     `maven-publish`
-    id("com.github.johnrengelman.shadow") version("7.1.2")
+    id("com.github.johnrengelman.shadow") version("8.1.1")
 }
 
 group = "me.dave"
-version = "1.2"
+version = "1.2.2"
 
 repositories {
     mavenCentral()
@@ -23,28 +22,29 @@ dependencies {
 }
 
 java {
-    configurations.shadow.get().dependencies.remove(dependencies.gradleApi())
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
-tasks.shadowJar {
-    minimize()
-    configurations = listOf(project.configurations.shadow.get())
-    val folder = System.getenv("pluginFolder_1-20")
-    if (folder != null) destinationDirectory.set(file(folder))
-    archiveFileName.set("${project.name}-${project.version}.jar")
-}
+tasks {
+    withType<JavaCompile> {
+        options.encoding = "UTF-8"
+    }
 
-tasks.withType<JavaCompile>() {
-    options.encoding = "UTF-8"
-}
+    shadowJar {
+        relocate("io.github.skytasul", "me.dave.glassitemframes.libraries.skytasul")
+        relocate("me.dave.chatcolorhandler", "me.dave.glassitemframes.libraries.chatcolor")
 
-// Handles version variables
-tasks.processResources {
-    expand(project.properties)
+        val folder = System.getenv("pluginFolder_1-20")
+        if (folder != null) destinationDirectory.set(file(folder))
+        archiveFileName.set("${project.name}-${project.version}.jar")
+    }
 
-    inputs.property("version", rootProject.version)
-    filesMatching("plugin.yml") {
-        expand("version" to rootProject.version)
+    processResources{
+        expand(project.properties)
+
+        inputs.property("version", rootProject.version)
+        filesMatching("plugin.yml") {
+            expand("version" to rootProject.version)
+        }
     }
 }
