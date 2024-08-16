@@ -1,6 +1,6 @@
 package me.dave.glassitemframes.listener;
 
-import me.dave.chatcolorhandler.ChatColorHandler;
+import org.lushplugins.chatcolorhandler.ChatColorHandler;
 import me.dave.glassitemframes.GlassItemFrames;
 import org.bukkit.*;
 import org.bukkit.entity.Item;
@@ -21,8 +21,8 @@ public class ItemFrameListener implements Listener {
         glassItemFrame = Bukkit.getServer().getUnsafe().modifyItemStack(new ItemStack(Material.ITEM_FRAME), "{CustomModelData:1,EntityTag:{Invisible:1b}}");
 
         ItemMeta itemMeta = glassItemFrame.getItemMeta();
-        itemMeta.setDisplayName(ChatColorHandler.translateAlternateColorCodes("&fGlass Item Frame"));
-        itemMeta.setLore(List.of(ChatColorHandler.translateAlternateColorCodes("&7An item frame but invisible")));
+        itemMeta.setDisplayName(ChatColorHandler.translate("&fGlass Item Frame"));
+        itemMeta.setLore(List.of(ChatColorHandler.translate("&7An item frame but invisible")));
 
         glassItemFrame.setItemMeta(itemMeta);
     }
